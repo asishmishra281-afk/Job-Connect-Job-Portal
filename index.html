@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JobConnect | Connecting Ambition With Opportunity</title>
+  <meta name="description" content="JobConnect is a modern, responsive job portal built for students, freshers, and job seekers to discover vetted internships, junior developer roles, and remote opportunities.">
+  <meta name="keywords" content="jobs, internships, students, freshers, remote jobs, developer careers, job portal, hiring">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===================================================================
+       Top Navigation Bar
+       =================================================================== -->
+  <header class="navbar" id="mainNavbar">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-logo" id="brandLogo">
+        <div class="brand-icon-wrapper">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+        </div>
+        <span class="brand-text">Job<span>Connect</span></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li>
+            <a href="#portalFeedAnchor" class="nav-link active" id="navExploreJobs">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              Find Jobs
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" id="navSavedBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+              Saved Jobs
+              <span class="nav-badge" id="savedJobsBadge">0</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link" id="navAppsBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+              </svg>
+              My Applications
+              <span class="nav-badge" id="applicationsBadge">0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions (Theme Toggle, Post a Job, Sign In) -->
+      <div class="nav-actions">
+        <!-- Light / Dark Mode Toggle -->
+        <button class="btn-icon" id="themeToggleBtn" aria-label="Toggle Theme" title="Toggle Theme">
+          <!-- Populated by JS -->
+        </button>
+
+        <!-- Post a Job Button -->
+        <button class="btn btn-outline btn-sm" id="navPostJobBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Post a Job
+        </button>
+
+        <!-- Sign In Button -->
+        <button class="btn btn-primary btn-sm" id="navSignInBtn" onclick="openModal('authModal')">
+          Sign In
+        </button>
+
+        <!-- Mobile Filter Button Trigger -->
+        <button class="btn-icon mobile-menu-btn" id="mobileFilterOpenBtn" aria-label="Open Filters">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================================================================
+       Hero Section
+       =================================================================== -->
+  <section class="hero-section" id="heroSection">
+    <div class="hero-glow-blob left"></div>
+    <div class="hero-glow-blob right"></div>
+
+    <div class="container hero-content">
+      <!-- Badge -->
+      <div class="hero-badge">
+        <span>🚀 #1 Career Discovery Platform for Students & Job Seekers</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="hero-title">
+        Discover Roles That Match <br><span class="gradient-text">Your True Ambition</span>
+      </h1>
+      <p class="hero-description">
+        Explore thousands of vetted internships, fresher-friendly roles, and remote opportunities across top tech companies, funded startups, and global enterprises.
+      </p>
+
+      <!-- Hero Search Bar -->
+      <div class="hero-search-wrapper">
+        <form class="hero-search-form" id="heroSearchForm">
+          <!-- Keyword input -->
+          <div class="search-field-group">
+            <span class="search-field-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input type="text" id="heroSearchInput" placeholder="Job title, skill (e.g. React, UI/UX, Python)...">
+          </div>
+
+          <!-- Location input -->
+          <div class="search-field-group">
+            <span class="search-field-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </span>
+            <input type="text" id="heroLocationInput" placeholder="Location or 'Remote'...">
+          </div>
+
+          <!-- Category Select -->
+          <div class="search-field-group" style="max-width: 220px;">
+            <span class="search-field-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </span>
+            <select id="heroCategorySelect" aria-label="Select Category">
+              <option value="">All Categories</option>
+              <option value="Engineering">Engineering & Tech</option>
+              <option value="Design">Design & Creative</option>
+              <option value="Data & AI">Data Science & AI</option>
+              <option value="Product">Product Management</option>
+              <option value="Marketing">Marketing & Growth</option>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary search-submit-btn" id="heroSearchSubmitBtn">
+            Search Jobs
+          </button>
+        </form>
+      </div>
+
+      <!-- Trending Quick Search Tags -->
+      <div class="trending-searches">
+        <span class="trending-label">Trending Searches:</span>
+        <button class="trending-pill" data-filter-type="student" data-filter-value="student">
+          🎓 Student Friendly
+        </button>
+        <button class="trending-pill" data-filter-type="remote" data-filter-value="remote">
+          🌐 100% Remote
+        </button>
+        <button class="trending-pill" data-filter-type="keyword" data-filter-value="React">
+          ⚡ React Developers
+        </button>
+        <button class="trending-pill" data-filter-type="category" data-filter-value="Design">
+          🎨 UI/UX Design
+        </button>
+        <button class="trending-pill" data-filter-type="category" data-filter-value="Data & AI">
+          🤖 AI & Data Science
+        </button>
+      </div>
+
+      <!-- Live Statistics -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">2,850+</div>
+          <div class="stat-label">Active Job Openings</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">740+</div>
+          <div class="stat-label">Verified Tech Companies</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Student Interview Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">24 Hours</div>
+          <div class="stat-label">Avg. Employer Response</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       Main Portal Body: Filters & Job Listings
+       =================================================================== -->
+  <main class="portal-main" id="portalFeedAnchor">
+    <div class="container portal-grid">
+      
+      <!-- Left Sidebar: Filter Panel -->
+      <aside class="filter-sidebar" id="filterSidebar">
+        <div class="filter-header">
+          <h3>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+            </svg>
+            Filter Jobs
+          </h3>
+          <button class="btn-reset-filters" id="resetFiltersBtn">Reset All</button>
+          <!-- Close button for mobile view -->
+          <button class="btn-icon mobile-menu-btn" id="mobileFilterCloseBtn" style="width: 32px; height: 32px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Special Switch: Student / Fresher Friendly -->
+        <div class="filter-group">
+          <div class="filter-toggle-row">
+            <div>
+              <div style="font-weight: 700; font-size: 0.92rem; color: var(--text-main);">🎓 Student Friendly</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Internships & 0-exp roles</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="studentFriendlyToggle">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Special Switch: Remote Only -->
+        <div class="filter-group">
+          <div class="filter-toggle-row">
+            <div>
+              <div style="font-weight: 700; font-size: 0.92rem; color: var(--text-main);">🌐 Remote Only</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Work from anywhere</div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="remoteOnlyToggle">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin-bottom: 20px;">
+
+        <!-- Categories Filter -->
+        <div class="filter-group">
+          <div class="filter-title">
+            <span>Category</span>
+          </div>
+          <div class="filter-options-list" id="categoryFilterOptions">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin-bottom: 20px;">
+
+        <!-- Job Type Filter -->
+        <div class="filter-group">
+          <div class="filter-title">
+            <span>Job Type</span>
+          </div>
+          <div class="filter-options-list" id="jobTypeFilterOptions">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin-bottom: 20px;">
+
+        <!-- Experience Level Filter -->
+        <div class="filter-group">
+          <div class="filter-title">
+            <span>Experience Level</span>
+          </div>
+          <div class="filter-options-list" id="experienceFilterOptions">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border-color); margin-bottom: 20px;">
+
+        <!-- Minimum Salary Filter -->
+        <div class="filter-group">
+          <div class="filter-title">
+            <span>Minimum Salary</span>
+            <span class="salary-current-val" id="salaryValDisplay">$0</span>
+          </div>
+          <div class="salary-slider-wrapper">
+            <input type="range" min="0" max="100000" step="5000" value="0" class="range-slider" id="salaryRangeSlider">
+            <div class="salary-display">
+              <span>$0</span>
+              <span>$50k</span>
+              <span>$100k+</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Right Column: Job Listings Feed -->
+      <section class="listings-feed">
+        <!-- Feed Top Controls Bar -->
+        <div class="feed-header">
+          <div class="results-count-wrapper">
+            <h2 id="resultsCount">Loading jobs...</h2>
+            <p>Showing verified openings matching your preferences</p>
+          </div>
+
+          <div class="feed-controls">
+            <!-- Sort dropdown -->
+            <div class="sort-select-wrapper">
+              <label for="sortSelect">Sort:</label>
+              <select id="sortSelect" class="sort-select">
+                <option value="recent">Most Recent</option>
+                <option value="salary-high">Salary: High to Low</option>
+                <option value="company">Company Name A-Z</option>
+                <option value="title">Job Title A-Z</option>
+              </select>
+            </div>
+
+            <!-- Grid vs List View Toggle -->
+            <div class="view-toggle-group">
+              <button class="view-btn active" id="viewGridBtn" title="Grid View" aria-label="Grid View">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </button>
+              <button class="view-btn" id="viewListBtn" title="List View" aria-label="List View">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="8" y1="6" x2="21" y2="6"></line>
+                  <line x1="8" y1="12" x2="21" y2="12"></line>
+                  <line x1="8" y1="18" x2="21" y2="18"></line>
+                  <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                  <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                  <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Active Filter Chips -->
+        <div class="active-filters-bar" id="activeFilterChips"></div>
+
+        <!-- Dynamic Jobs Grid -->
+        <div class="jobs-container grid-view" id="jobsContainer">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ===================================================================
+       Modal: Job Details (Quick View)
+       =================================================================== -->
+  <div class="modal-overlay" id="jobDetailModal">
+    <div class="modal-dialog job-detail-dialog">
+      <div class="modal-header">
+        <h3>Role Overview</h3>
+        <button class="modal-close-btn" onclick="closeModal('jobDetailModal')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body" id="jobDetailBody">
+        <!-- Injected by JS -->
+      </div>
+      <div class="modal-footer" id="jobDetailFooter">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       Modal: Job Application Form
+       =================================================================== -->
+  <div class="modal-overlay" id="applyModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3>Submit Application</h3>
+          <p id="applyModalRoleTitle" style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">Applying to Position</p>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('applyModal')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="applyJobForm">
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Full Name <span class="req">*</span></label>
+              <input type="text" id="applyFullName" class="form-input" placeholder="e.g. Alex Rivera" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address <span class="req">*</span></label>
+              <input type="email" id="applyEmail" class="form-input" placeholder="alex.rivera@example.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" id="applyPhone" class="form-input" placeholder="+1 (555) 000-0000">
+            </div>
+            <div class="form-group">
+              <label class="form-label">LinkedIn / GitHub Profile</label>
+              <input type="url" id="applyLinkedin" class="form-input" placeholder="https://linkedin.com/in/alex">
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Portfolio / Personal Website</label>
+              <input type="url" id="applyPortfolio" class="form-input" placeholder="https://myportfolio.dev">
+            </div>
+
+            <!-- Resume Upload Dropzone -->
+            <div class="form-group full-width">
+              <label class="form-label">Resume / CV <span class="req">*</span></label>
+              <div class="file-upload-area" id="resumeDropzone">
+                <input type="file" id="resumeFileInput" accept=".pdf,.doc,.docx" style="display: none;">
+                <div class="upload-icon">
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                </div>
+                <p style="font-weight: 600; font-size: 0.92rem;">Click to upload or drag & drop your resume</p>
+                <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;">PDF, DOC, DOCX up to 10MB</p>
+                <div class="upload-filename" id="resumeFileNameDisplay"></div>
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <label class="form-label">Why are you a great fit for this role?</label>
+              <textarea id="applyCoverNote" class="form-textarea" placeholder="Briefly describe your relevant coursework, projects, or passion for this position..."></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('applyModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary" id="submitAppBtn">Submit Application</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       Modal: Post a Job (Employer Mode)
+       =================================================================== -->
+  <div class="modal-overlay" id="postJobModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <h3>Post a New Opportunity</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 2px;">Reach thousands of motivated students and job seekers</p>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('postJobModal')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="postJobForm">
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Job Title <span class="req">*</span></label>
+              <input type="text" id="postJobTitle" class="form-input" placeholder="e.g. Junior Web Developer" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Company Name <span class="req">*</span></label>
+              <input type="text" id="postJobCompany" class="form-input" placeholder="e.g. Acme Tech Labs" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select id="postJobCategory" class="form-select">
+                <option value="Engineering">Engineering & Tech</option>
+                <option value="Design">Design & Creative</option>
+                <option value="Data & AI">Data Science & AI</option>
+                <option value="Product">Product Management</option>
+                <option value="Marketing">Marketing & Growth</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Job Type</label>
+              <select id="postJobType" class="form-select">
+                <option value="Full-time">Full-time</option>
+                <option value="Internship">Internship</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Contract">Contract</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Experience Level</label>
+              <select id="postJobExperience" class="form-select">
+                <option value="Fresher / Intern">Fresher / Intern</option>
+                <option value="Junior (0-2 yrs)">Junior (0-2 yrs)</option>
+                <option value="Mid-Level (2-5 yrs)">Mid-Level (2-5 yrs)</option>
+                <option value="Senior (5+ yrs)">Senior (5+ yrs)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Salary Display</label>
+              <input type="text" id="postJobSalary" class="form-input" placeholder="e.g. $70,000 - $85,000 / yr">
+              <input type="hidden" id="postJobSalaryMin" value="70000">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Location</label>
+              <input type="text" id="postJobLocation" class="form-input" placeholder="e.g. San Francisco, CA or Remote">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Skills / Tags (comma-separated)</label>
+              <input type="text" id="postJobTags" class="form-input" placeholder="JavaScript, React, Node.js">
+            </div>
+            <div class="form-group full-width" style="display: flex; gap: 24px; padding: 4px 0;">
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
+                <input type="checkbox" id="postJobRemote" checked> 100% Remote Position
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
+                <input type="checkbox" id="postJobStudent" checked> Student / Fresher Friendly
+              </label>
+            </div>
+            <div class="form-group full-width">
+              <label class="form-label">Role Description & Responsibilities <span class="req">*</span></label>
+              <textarea id="postJobDesc" class="form-textarea" placeholder="Detail the day-to-day responsibilities and mission of this role..." required></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('postJobModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Publish Job Listing</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       Modal: User Authentication (Demo)
+       =================================================================== -->
+  <div class="modal-overlay" id="authModal">
+    <div class="modal-dialog" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3>Welcome to JobConnect</h3>
+        <button class="modal-close-btn" onclick="closeModal('authModal')">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
+          Log in or create a student profile to save opportunities, track submissions, and receive recruiter alerts.
+        </p>
+        <div class="form-group" style="margin-bottom: 14px;">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="student@university.edu" value="alex.rivera@example.com">
+        </div>
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-input" placeholder="••••••••" value="password123">
+        </div>
+        <button class="btn btn-primary" style="width: 100%;" onclick="closeModal('authModal'); showToast('Signed in as Alex Rivera (Student)', 'success');">
+          Continue as Alex Rivera
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       Slide-over Drawer: Saved Jobs
+       =================================================================== -->
+  <div class="drawer-overlay" id="savedJobsDrawerOverlay"></div>
+  <div class="drawer-panel" id="savedJobsDrawerPanel">
+    <div class="drawer-header">
+      <h3>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+        </svg>
+        Saved Jobs
+      </h3>
+      <button class="modal-close-btn" onclick="closeDrawer('savedJobsDrawer')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="drawer-body" id="savedJobsDrawerBody">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       Slide-over Drawer: My Applications
+       =================================================================== -->
+  <div class="drawer-overlay" id="applicationsDrawerOverlay"></div>
+  <div class="drawer-panel" id="applicationsDrawerPanel">
+    <div class="drawer-header">
+      <h3>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+        </svg>
+        My Applications
+      </h3>
+      <button class="modal-close-btn" onclick="closeDrawer('applicationsDrawer')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="drawer-body" id="applicationsDrawerBody">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       Toast Notification Container
+       =================================================================== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ===================================================================
+       Footer Section
+       =================================================================== -->
+  <footer class="portal-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="brand-logo">
+            <div class="brand-icon-wrapper" style="width: 36px; height: 36px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <span class="brand-text">Job<span>Connect</span></span>
+          </a>
+          <p>
+            Bridging the gap between talented students, ambitious job seekers, and top-tier employers through modern career discovery.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>For Job Seekers</h4>
+          <ul class="footer-links">
+            <li><a href="#portalFeedAnchor" onclick="resetAllFilters()">Browse All Jobs</a></li>
+            <li><a href="#" onclick="document.getElementById('studentFriendlyToggle').click(); applyFiltersAndRender();">Student Internships</a></li>
+            <li><a href="#" onclick="document.getElementById('remoteOnlyToggle').click(); applyFiltersAndRender();">Remote Careers</a></li>
+            <li><a href="#" onclick="openApplicationsDrawer()">Application Tracker</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>For Employers</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="openModal('postJobModal')">Post a Job Opening</a></li>
+            <li><a href="#">Campus Hiring Solutions</a></li>
+            <li><a href="#">Recruiter Dashboard</a></li>
+            <li><a href="#">Pricing & Sponsorship</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get Job Alerts</h4>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 10px;">
+            Subscribe to receive the latest student-friendly and remote job openings right in your inbox.
+          </p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-primary btn-sm">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 JobConnect. Designed & Built for modern students & career seekers.
+        </div>
+        <div style="display: flex; gap: 16px;">
+          <a href="#" style="color: var(--text-muted);">Privacy Policy</a>
+          <a href="#" style="color: var(--text-muted);">Terms of Service</a>
+          <a href="#" style="color: var(--text-muted);">Security</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
